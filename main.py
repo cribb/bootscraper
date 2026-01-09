@@ -13,11 +13,17 @@ def main():
         sys.exit(1)
 
     script_name = sys.argv[0]
-    url = sys.argv[1]
+    baseurl = sys.argv[1]
     print("Script name:", script_name)
-    print("Argument: ", url)
-    print("starting crawl of: ", url)
-    html = get_html(url)
+    print("Argument: ", baseurl)
+    print("starting crawl of: ", baseurl)
+    
+    try:
+        html = get_html(baseurl)
+    except Exception as ex:
+        print(f"Bootscraper {ex}: failed scrape for '{baseurl}'.")
+        sys.exit(1)
+
     print(html)
     sys.exit(0)
 

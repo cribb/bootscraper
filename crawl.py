@@ -78,17 +78,22 @@ def extract_page_data(html, page_url):
     return page
 
 def get_html(url):
-    r = requests.get(url, headers={"User-Agent": "Bootscraper/1.0"})
-    content_type = r.headers['Content-Type']
+
+    try:
+        resp = requests.get(url, headers={"User-Agent": "Bootscraper/1.0"})
+    except Exception as e:
+        raise Exception(f"Something went wrong with {url}. Try picking yourself up by your bootsraps?")
+
+    content_type = resp.headers['Content-Type']
     print(content_type)
 
-    if r.status_code >= 400:
-        sys.exit(f"Error when scraping boots (Status Code {r.status_code}: {r.reason}).")
+    if resp.status_code >= 400:
+        sys.exit(f"HTTP error when scraping boots (Status Code {resp.status_code}: {resp.reason}).")
     
     if "text/html" not in content_type:
         sys.exit(f"Error with header info.")
     
-    return r.text
+    return resp.text
 
 def crawl_page():
     pass
