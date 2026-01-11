@@ -120,8 +120,8 @@ class TestCrawl(unittest.TestCase):
 
     def test_get_urls_from_html_2(self):
         input_url = "https://blog.boot.dev"
-        input_body = '<a/>'
-        expected = ['https://blog.boot.dev']
+        input_body = '<html><body><a href="/blah">NULL</a></body></html>'
+        expected = ['https://blog.boot.dev/blah']
         actual = get_urls_from_html(input_body, input_url)
         self.assertListEqual(actual, expected)
     
