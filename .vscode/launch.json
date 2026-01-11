@@ -8,9 +8,22 @@
             "name": "Python Debugger: Current File with Arguments",
             "type": "debugpy",
             "request": "launch",
-            "program": "${file}",
+            "program": "${workspaceFolder}/main.py",
             "console": "integratedTerminal",
-            "args": "https://wagslane.dev"
-        }
+            // "args": ["http://0.0.0.0:8000/", "async", "1"]
+            "args": ["https://cribb.github.io/cribb-tutoring", "async", "1"]
+            // "args": ["https://wagslane.dev", "sync"]
+        },
+
+        {
+            "name": "Python Debugger: Test-suite",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/test_crawl.py",
+            "console": "integratedTerminal",
+            //"args": ["https://wagslane.dev", "sync"]
+        },
+
+
     ]
 }
