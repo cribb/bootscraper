@@ -98,7 +98,7 @@ def extract_page_data(html, page_url):
     page["first_paragraph"] = get_first_paragraph_from_html(html)
     page["outgoing_links"] = get_urls_from_html(html, page_url)
     page["image_urls"] = get_images_from_html(html, page_url)
-    # print(f"Page: {page}")
+    # print(f"[PAGE] {page}")
     return page
 
 
@@ -115,7 +115,7 @@ def get_html(url):
         return
 
     content_type = resp.headers['Content-Type']
-    print(f" --> Found {content_type} as content type.")
+    # print(f" --> Found {content_type} as content type.")
 
     if "text/html" not in content_type:
         print(f"Page header type ({content_type}) inconsistent with scraping.")
@@ -141,7 +141,7 @@ def crawl_page(base_url, current_url=None, page_data=None):
     norm_url = normalize_url(current_url)
 
     if norm_url in page_data:
-        print(" --> Already crawled this page. Moving on...")
+        # print(" --> Already crawled this page. Moving on...")
         return page_data
     
     # norm_url is appropriate for dictionary entry, but not as an actual link
@@ -157,11 +157,10 @@ def crawl_page(base_url, current_url=None, page_data=None):
     # unique_list_of_links = list(set(outgoing_links))
 
     for link in outgoing_links:
-        print(f"Plumbing the depths of {link}...")
+        # print(f"Plumbing the depths of {link}...")
         page_data = crawl_page(base_url, current_url=link, page_data=page_data)
         
     return page_data
-
 
 
 def main():    
