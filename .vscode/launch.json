@@ -10,9 +10,12 @@
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
             "console": "integratedTerminal",
-            // "args": ["http://0.0.0.0:8000/", "async", "1"]
-            "args": ["https://cribb.github.io/cribb-tutoring", "async", "1"]
-            // "args": ["https://wagslane.dev", "sync"]
+            // "args": [url, max_concurrency, max_pages, mode]
+            // "args": ["http://0.0.0.0:8000/", "1", "25", "async"]
+            // "args": ["https://wagslane.dev", "4", "10", "async"]
+            // "args": ["https://cribb.github.io/cribb-tutoring", "4", "73", "async"]
+            // "args": ["https://crawler-test.com/", "3", "25", "async"]
+            "args": ["https://blog.boot.dev", "3", "25"]
         },
 
         {
@@ -21,9 +24,10 @@
             "request": "launch",
             "program": "${workspaceFolder}/test_crawl.py",
             "console": "integratedTerminal",
-            //"args": ["https://wagslane.dev", "sync"]
+            //"args": ["https://wagslane.dev", "1", "10", "sync"]
         },
 
 
     ]
 }
+
